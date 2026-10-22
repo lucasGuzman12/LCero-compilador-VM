@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de origen">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Archivos de origen\common">
+      <UniqueIdentifier>{A87126C9-35E9-461C-8CB4-49510828632D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\lexer">
+      <UniqueIdentifier>{8A94248C-692F-4539-99E8-3909E482BA60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\ast">
+      <UniqueIdentifier>{BA6F1194-3F72-4451-A361-914B0DD8C9EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\parser">
+      <UniqueIdentifier>{D31F1AF8-20CF-4AA4-A269-F59A70567A77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\semantic">
+      <UniqueIdentifier>{7EF8F46A-C8B8-4AEF-985F-44082E3FEA15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\ir">
+      <UniqueIdentifier>{4CE4C8CC-E80A-4F4F-B2A4-3261BF3A8239}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\lcero">
+      <UniqueIdentifier>{56889BA5-1AE3-4D7F-B7A3-43A358C97D62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\lcero\common">
+      <UniqueIdentifier>{1703E7AD-D6DC-4E60-830B-A430F578E8FD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\lcero\lexer">
+      <UniqueIdentifier>{DAD2B54E-8861-4B65-A25C-B62180A0979B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\lcero\ast">
+      <UniqueIdentifier>{62D10B93-3159-46B4-AFB5-4E9EC00E5C7D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\lcero\parser">
+      <UniqueIdentifier>{EFB75FE5-A696-4556-B6A3-B80C24AB1410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\lcero\semantic">
+      <UniqueIdentifier>{07D0429C-FCAD-4CEB-B371-DF72B983878E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\lcero\ir">
+      <UniqueIdentifier>{40804E87-092D-412F-A055-52AD69BF5F9F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentacion">
+      <UniqueIdentifier>{8BC8A87A-7852-44C6-BE18-455623460754}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ast\ast.cpp">
+      <Filter>Archivos de origen\ast</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\compiler.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\compiler_options.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\console_menu.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\diagnostic.cpp">
+      <Filter>Archivos de origen\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\diagnostic_renderer.cpp">
+      <Filter>Archivos de origen\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\output_artifact.cpp">
+      <Filter>Archivos de origen\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\path_resolver.cpp">
+      <Filter>Archivos de origen\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\source_reader.cpp">
+      <Filter>Archivos de origen\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lexer\automata.cpp">
+      <Filter>Archivos de origen\lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lexer\lexer.cpp">
+      <Filter>Archivos de origen\lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lexer\token.cpp">
+      <Filter>Archivos de origen\lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ir\generator.cpp">
+      <Filter>Archivos de origen\ir</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ir\ir.cpp">
+      <Filter>Archivos de origen\ir</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ir\lci_validator.cpp">
+      <Filter>Archivos de origen\ir</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ir\reference_backend.cpp">
+      <Filter>Archivos de origen\ir</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ir\optimized_backend.cpp">
+      <Filter>Archivos de origen\ir</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ir\register_allocation.cpp">
+      <Filter>Archivos de origen\ir</Filter>
+    </ClCompile>
+    <ClCompile Include="src\parser\grammar.cpp">
+      <Filter>Archivos de origen\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\parser\parser.cpp">
+      <Filter>Archivos de origen\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\semantic\semantic_analyzer.cpp">
+      <Filter>Archivos de origen\semantic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\semantic\symbol_table.cpp">
+      <Filter>Archivos de origen\semantic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\lcero\ast\ast.hpp">
+      <Filter>Archivos de encabezado\lcero\ast</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\compiler.hpp">
+      <Filter>Archivos de encabezado\lcero</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\compiler_options.hpp">
+      <Filter>Archivos de encabezado\lcero</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\console_menu.hpp">
+      <Filter>Archivos de encabezado\lcero</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\common\diagnostic.hpp">
+      <Filter>Archivos de encabezado\lcero\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\common\diagnostic_renderer.hpp">
+      <Filter>Archivos de encabezado\lcero\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\common\output_artifact.hpp">
+      <Filter>Archivos de encabezado\lcero\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\common\path_resolver.hpp">
+      <Filter>Archivos de encabezado\lcero\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\common\source_reader.hpp">
+      <Filter>Archivos de encabezado\lcero\common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\lexer\automata.hpp">
+      <Filter>Archivos de encabezado\lcero\lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\lexer\lexer.hpp">
+      <Filter>Archivos de encabezado\lcero\lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\lexer\token.hpp">
+      <Filter>Archivos de encabezado\lcero\lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\ir\generator.hpp">
+      <Filter>Archivos de encabezado\lcero\ir</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\ir\ir.hpp">
+      <Filter>Archivos de encabezado\lcero\ir</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\ir\lci_validator.hpp">
+      <Filter>Archivos de encabezado\lcero\ir</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\ir\reference_backend.hpp">
+      <Filter>Archivos de encabezado\lcero\ir</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\ir\optimized_backend.hpp">
+      <Filter>Archivos de encabezado\lcero\ir</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\ir\register_allocation.hpp">
+      <Filter>Archivos de encabezado\lcero\ir</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\parser\grammar.hpp">
+      <Filter>Archivos de encabezado\lcero\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\parser\parser.hpp">
+      <Filter>Archivos de encabezado\lcero\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\semantic\semantic_analyzer.hpp">
+      <Filter>Archivos de encabezado\lcero\semantic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lcero\semantic\symbol_table.hpp">
+      <Filter>Archivos de encabezado\lcero\semantic</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\programa.lc">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\modulo_0_infraestructura.md">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\modulo_1_lexer_afd.md">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\modulo_2_parser_ast.md">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\modulo_3_analisis_semantico.md">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\modulo_4_representacion_intermedia.md">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\modulo_5_optimizacion_chaitin.md">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="contract\RI-v1.md">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="contract\examples\aritmetica.lci">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="contract\examples\division_truncada.lci">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="contract\expected\aritmetica.out">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="contract\expected\division_truncada.out">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\gramatica\lcero_bnf.txt">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\gramatica\first.csv">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\gramatica\follow.csv">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\gramatica\select.csv">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\gramatica\tabla_ll1.csv">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\automatas\afd_minimo_transiciones.csv">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\automatas\afd_subconjuntos.csv">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\automatas\afn_ramas.csv">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\automatas\clases_simbolos.csv">
+      <Filter>Documentacion</Filter>
+    </None>
+    <None Include="docs\automatas\minimizacion_particiones.txt">
+      <Filter>Documentacion</Filter>
+    </None>
+  </ItemGroup>
+</Project>

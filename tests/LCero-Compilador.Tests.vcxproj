@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{F19D5221-FB8B-48E2-9B33-DC3FBAD2AA29}</ProjectGuid>
+    <RootNamespace>LCeroCompiladorTests</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"
+            Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')"
+            Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir>$(ProjectDir)..\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)..\obj\Tests\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>LCero.Compiler.Tests</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='Debug'">_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='Release'">NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="test_main.cpp" />
+    <ClCompile Include="..\src\ast\ast.cpp" />
+    <ClCompile Include="..\src\compiler.cpp" />
+    <ClCompile Include="..\src\compiler_options.cpp" />
+    <ClCompile Include="..\src\console_menu.cpp" />
+    <ClCompile Include="..\src\common\diagnostic.cpp" />
+    <ClCompile Include="..\src\common\diagnostic_renderer.cpp" />
+    <ClCompile Include="..\src\common\output_artifact.cpp" />
+    <ClCompile Include="..\src\common\path_resolver.cpp" />
+    <ClCompile Include="..\src\common\source_reader.cpp" />
+    <ClCompile Include="..\src\lexer\automata.cpp" />
+    <ClCompile Include="..\src\lexer\lexer.cpp" />
+    <ClCompile Include="..\src\lexer\token.cpp" />
+    <ClCompile Include="..\src\ir\generator.cpp" />
+    <ClCompile Include="..\src\ir\ir.cpp" />
+    <ClCompile Include="..\src\ir\lci_validator.cpp" />
+    <ClCompile Include="..\src\ir\optimized_backend.cpp" />
+    <ClCompile Include="..\src\ir\reference_backend.cpp" />
+    <ClCompile Include="..\src\ir\register_allocation.cpp" />
+    <ClCompile Include="..\src\parser\grammar.cpp" />
+    <ClCompile Include="..\src\parser\parser.cpp" />
+    <ClCompile Include="..\src\semantic\semantic_analyzer.cpp" />
+    <ClCompile Include="..\src\semantic\symbol_table.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\lcero\ast\ast.hpp" />
+    <ClInclude Include="..\include\lcero\compiler.hpp" />
+    <ClInclude Include="..\include\lcero\compiler_options.hpp" />
+    <ClInclude Include="..\include\lcero\console_menu.hpp" />
+    <ClInclude Include="..\include\lcero\common\diagnostic.hpp" />
+    <ClInclude Include="..\include\lcero\common\diagnostic_renderer.hpp" />
+    <ClInclude Include="..\include\lcero\common\output_artifact.hpp" />
+    <ClInclude Include="..\include\lcero\common\path_resolver.hpp" />
+    <ClInclude Include="..\include\lcero\common\source_reader.hpp" />
+    <ClInclude Include="..\include\lcero\lexer\automata.hpp" />
+    <ClInclude Include="..\include\lcero\lexer\lexer.hpp" />
+    <ClInclude Include="..\include\lcero\lexer\token.hpp" />
+    <ClInclude Include="..\include\lcero\ir\generator.hpp" />
+    <ClInclude Include="..\include\lcero\ir\ir.hpp" />
+    <ClInclude Include="..\include\lcero\ir\lci_validator.hpp" />
+    <ClInclude Include="..\include\lcero\ir\optimized_backend.hpp" />
+    <ClInclude Include="..\include\lcero\ir\reference_backend.hpp" />
+    <ClInclude Include="..\include\lcero\ir\register_allocation.hpp" />
+    <ClInclude Include="..\include\lcero\parser\grammar.hpp" />
+    <ClInclude Include="..\include\lcero\parser\parser.hpp" />
+    <ClInclude Include="..\include\lcero\semantic\semantic_analyzer.hpp" />
+    <ClInclude Include="..\include\lcero\semantic\symbol_table.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

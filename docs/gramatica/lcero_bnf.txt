@@ -1,0 +1,45 @@
+Gramatica BNF de L-Cero - Modulo 2
+Simbolo inicial: Programa
+epsilon representa la cadena vacia.
+
+ 1. Programa       -> DeclSeq StmtSeq EOF
+ 2. DeclSeq        -> Declaracion DeclSeq
+ 3. DeclSeq        -> epsilon
+ 4. Declaracion    -> KW_INT ID SEMICOLON
+ 5. StmtSeq        -> Instruccion StmtSeqTail
+ 6. StmtSeqTail    -> Instruccion StmtSeqTail
+ 7. StmtSeqTail    -> epsilon
+ 8. Instruccion    -> Asignacion
+ 9. Instruccion    -> Impresion
+10. Instruccion    -> Condicional
+11. Instruccion    -> Bucle
+12. Asignacion     -> ID ASSIGN Expresion SEMICOLON
+13. Impresion      -> KW_PRINT LPAREN Expresion RPAREN SEMICOLON
+14. Condicional    -> KW_IF LPAREN Condicion RPAREN Bloque ElseOpt
+15. ElseOpt        -> KW_ELSE Bloque
+16. ElseOpt        -> epsilon
+17. Bucle          -> KW_WHILE LPAREN Condicion RPAREN Bloque
+18. Bloque         -> LBRACE StmtSeq RBRACE
+19. Condicion      -> Expresion Comparador Expresion
+20. Comparador     -> EQ
+21. Comparador     -> NE
+22. Comparador     -> LT
+23. Comparador     -> GT
+24. Comparador     -> LE
+25. Comparador     -> GE
+26. Expresion      -> Termino ExprTail
+27. ExprTail       -> PLUS Termino ExprTail
+28. ExprTail       -> MINUS Termino ExprTail
+29. ExprTail       -> epsilon
+30. Termino        -> Unario TermTail
+31. TermTail       -> STAR Unario TermTail
+32. TermTail       -> SLASH Unario TermTail
+33. TermTail       -> epsilon
+34. Unario         -> MINUS Unario
+35. Unario         -> Primario
+36. Primario       -> NUMBER
+37. Primario       -> ID
+38. Primario       -> LPAREN Expresion RPAREN
+
+Inventario: 20 no terminales, 24 terminales y 38 producciones.
+Fuente ejecutable equivalente: Grammar::lcero() en src/parser/grammar.cpp.

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\ast\ast.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <Filter Include="Pruebas">
+      <UniqueIdentifier>{10D0C608-6672-407D-8171-4AB630F78C20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Codigo compartido">
+      <UniqueIdentifier>{B734E5C4-3032-464D-9908-D57B7A7364D2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Encabezados">
+      <UniqueIdentifier>{0791D9A6-10C1-4D11-BF29-1C47280C70AF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="test_main.cpp">
+      <Filter>Pruebas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compiler.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compiler_options.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\console_menu.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\diagnostic.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\diagnostic_renderer.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\output_artifact.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\path_resolver.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\source_reader.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\lexer\automata.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\lexer\lexer.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\lexer\token.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ir\generator.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ir\ir.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ir\lci_validator.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ir\reference_backend.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ir\optimized_backend.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ir\register_allocation.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\parser\grammar.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\parser\parser.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\semantic\semantic_analyzer.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\semantic\symbol_table.cpp">
+      <Filter>Codigo compartido</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\lcero\ast\ast.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\compiler.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\compiler_options.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\console_menu.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\common\diagnostic.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\common\diagnostic_renderer.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\common\output_artifact.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\common\path_resolver.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\common\source_reader.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\lexer\automata.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\lexer\lexer.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\lexer\token.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\ir\generator.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\ir\ir.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\ir\lci_validator.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\ir\reference_backend.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\ir\optimized_backend.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\ir\register_allocation.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\parser\grammar.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\parser\parser.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\semantic\semantic_analyzer.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\lcero\semantic\symbol_table.hpp">
+      <Filter>Encabezados</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

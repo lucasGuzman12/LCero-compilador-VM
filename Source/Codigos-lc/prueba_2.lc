@@ -1,0 +1,29 @@
+int x;
+int y;
+
+x = 15;
+y = 10;
+
+if (x > y) {
+    print(100);
+} else {
+    print(200);
+}
+
+if (x == 15) {
+    if (y != 10) {
+        print(300);
+    } else {
+        print(400);
+    }
+}
+
+if (x < y) {
+    print(500);
+} else {
+    print(600);
+}
+
+if (x >= 15) {
+    print(700);
+}

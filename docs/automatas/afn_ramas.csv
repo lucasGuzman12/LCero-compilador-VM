@@ -1,0 +1,25 @@
+patron,inicio,estados_de_cadena,final,tipo,prioridad
+int,N1,"N2(i)|N3(n)|N4(t)",N4,KW_INT,0
+if,N5,"N6(i)|N7(f)",N7,KW_IF,0
+else,N8,"N9(e)|N10(l)|N11(s)|N12(e)",N12,KW_ELSE,0
+while,N13,"N14(w)|N15(h)|N16(i)|N17(l)|N18(e)",N18,KW_WHILE,0
+print,N19,"N20(p)|N21(r)|N22(i)|N23(n)|N24(t)",N24,KW_PRINT,0
+ID,N25,"N26([A-Za-z_]); N26 --[A-Za-z0-9_]--> N26",N26,ID,100
+NUMBER,N27,"N28([0-9]); N28 --[0-9]--> N28",N28,NUMBER,100
+WHITESPACE,N29,"N30([ TAB|LF|CR]); N30 --[ TAB|LF|CR]--> N30",N30,WHITESPACE,200
++,N31,N32(+),N32,PLUS,10
+-,N33,N34(-),N34,MINUS,10
+*,N35,N36(*),N36,STAR,10
+/,N37,N38(/),N38,SLASH,10
+==,N39,"N40(=)|N41(=)",N41,EQ,10
+!=,N42,"N43(!)|N44(=)",N44,NE,10
+<,N45,N46(<),N46,LT,10
+>,N47,N48(>),N48,GT,10
+<=,N49,"N50(<)|N51(=)",N51,LE,10
+>=,N52,"N53(>)|N54(=)",N54,GE,10
+=,N55,N56(=),N56,ASSIGN,10
+(,N57,N58((),N58,LPAREN,10
+),N59,N60()),N60,RPAREN,10
+{,N61,N62({),N62,LBRACE,10
+},N63,N64(}),N64,RBRACE,10
+;,N65,N66(;),N66,SEMICOLON,10

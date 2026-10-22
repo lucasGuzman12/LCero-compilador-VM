@@ -1,0 +1,9 @@
+.vs/
+bin/
+obj/
+*.user
+*.VC.db
+*.VC.opendb
+LCIs/*.lci
+LCIs/*.lci.tmp
+!LCIs/.gitkeep

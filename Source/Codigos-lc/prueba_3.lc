@@ -1,0 +1,31 @@
+int i;
+int j;
+int suma;
+int producto;
+
+i = 1;
+j = 0;
+suma = 0;
+producto = 1;
+
+while (i <= 4) {
+    j = 1;
+
+    while (j <= 3) {
+        suma = suma + i * j;
+        j = j + 1;
+    }
+
+    if (i == 2) {
+        producto = producto * 5;
+    } else {
+        producto = producto * 2;
+    }
+
+    i = i + 1;
+}
+
+print(suma);
+print(producto);
+print(i);
+print(j);

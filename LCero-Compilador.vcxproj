@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{83ea3207-0e7f-4ff1-aae4-d77be1844805}</ProjectGuid>
+    <RootNamespace>LCeroCompilador</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared" >
+  </ImportGroup>
+    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    </ImportGroup>
+    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    </ImportGroup>
+    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    </ImportGroup>
+    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    </ImportGroup>
+
+  <PropertyGroup Label="UserMacros" />
+
+  <PropertyGroup>
+    <OutDir>$(ProjectDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>LCero.Compiler</TargetName>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Manifest>
+       <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Manifest>
+       <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Manifest>
+       <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Manifest>
+       <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <ClCompile Include="src\ast\ast.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\compiler.cpp" />
+    <ClCompile Include="src\compiler_options.cpp" />
+    <ClCompile Include="src\console_menu.cpp" />
+    <ClCompile Include="src\common\diagnostic.cpp" />
+    <ClCompile Include="src\common\diagnostic_renderer.cpp" />
+    <ClCompile Include="src\common\output_artifact.cpp" />
+    <ClCompile Include="src\common\path_resolver.cpp" />
+    <ClCompile Include="src\common\source_reader.cpp" />
+    <ClCompile Include="src\lexer\automata.cpp" />
+    <ClCompile Include="src\lexer\lexer.cpp" />
+    <ClCompile Include="src\lexer\token.cpp" />
+    <ClCompile Include="src\ir\generator.cpp" />
+    <ClCompile Include="src\ir\ir.cpp" />
+    <ClCompile Include="src\ir\lci_validator.cpp" />
+    <ClCompile Include="src\ir\optimized_backend.cpp" />
+    <ClCompile Include="src\ir\reference_backend.cpp" />
+    <ClCompile Include="src\ir\register_allocation.cpp" />
+    <ClCompile Include="src\parser\grammar.cpp" />
+    <ClCompile Include="src\parser\parser.cpp" />
+    <ClCompile Include="src\semantic\semantic_analyzer.cpp" />
+    <ClCompile Include="src\semantic\symbol_table.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\lcero\ast\ast.hpp" />
+    <ClInclude Include="include\lcero\compiler.hpp" />
+    <ClInclude Include="include\lcero\compiler_options.hpp" />
+    <ClInclude Include="include\lcero\console_menu.hpp" />
+    <ClInclude Include="include\lcero\common\diagnostic.hpp" />
+    <ClInclude Include="include\lcero\common\diagnostic_renderer.hpp" />
+    <ClInclude Include="include\lcero\common\output_artifact.hpp" />
+    <ClInclude Include="include\lcero\common\path_resolver.hpp" />
+    <ClInclude Include="include\lcero\common\source_reader.hpp" />
+    <ClInclude Include="include\lcero\lexer\automata.hpp" />
+    <ClInclude Include="include\lcero\lexer\lexer.hpp" />
+    <ClInclude Include="include\lcero\lexer\token.hpp" />
+    <ClInclude Include="include\lcero\ir\generator.hpp" />
+    <ClInclude Include="include\lcero\ir\ir.hpp" />
+    <ClInclude Include="include\lcero\ir\lci_validator.hpp" />
+    <ClInclude Include="include\lcero\ir\optimized_backend.hpp" />
+    <ClInclude Include="include\lcero\ir\reference_backend.hpp" />
+    <ClInclude Include="include\lcero\ir\register_allocation.hpp" />
+    <ClInclude Include="include\lcero\parser\grammar.hpp" />
+    <ClInclude Include="include\lcero\parser\parser.hpp" />
+    <ClInclude Include="include\lcero\semantic\semantic_analyzer.hpp" />
+    <ClInclude Include="include\lcero\semantic\symbol_table.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\programa.lc" />
+    <None Include="docs\modulo_0_infraestructura.md" />
+    <None Include="docs\modulo_1_lexer_afd.md" />
+    <None Include="docs\modulo_2_parser_ast.md" />
+    <None Include="docs\modulo_3_analisis_semantico.md" />
+    <None Include="docs\modulo_4_representacion_intermedia.md" />
+    <None Include="docs\modulo_5_optimizacion_chaitin.md" />
+    <None Include="contract\RI-v1.md" />
+    <None Include="contract\examples\aritmetica.lci" />
+    <None Include="contract\examples\division_truncada.lci" />
+    <None Include="contract\expected\aritmetica.out" />
+    <None Include="contract\expected\division_truncada.out" />
+    <None Include="docs\gramatica\lcero_bnf.txt" />
+    <None Include="docs\gramatica\first.csv" />
+    <None Include="docs\gramatica\follow.csv" />
+    <None Include="docs\gramatica\select.csv" />
+    <None Include="docs\gramatica\tabla_ll1.csv" />
+    <None Include="docs\automatas\afd_minimo_transiciones.csv" />
+    <None Include="docs\automatas\afd_subconjuntos.csv" />
+    <None Include="docs\automatas\afn_ramas.csv" />
+    <None Include="docs\automatas\clases_simbolos.csv" />
+    <None Include="docs\automatas\minimizacion_particiones.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
