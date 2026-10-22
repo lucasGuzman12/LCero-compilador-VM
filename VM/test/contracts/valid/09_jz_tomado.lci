@@ -1,0 +1,9 @@
+LCERO_IR 1
+MEM 0
+CONST R0, 0
+JZ R0, correcto
+CONST R1, 999
+LABEL correcto
+CONST R1, 42
+PRINT R1
+HALT

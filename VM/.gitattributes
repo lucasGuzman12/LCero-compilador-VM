@@ -1,0 +1,14 @@
+# Normalizacion reproducible del codigo y de la RI textual.
+* text=auto
+*.cpp text eol=lf
+*.hpp text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.lci text eol=lf
+*.ps1 text eol=crlf
+CMakeLists.txt text eol=lf
+.gitignore text eol=lf
+
+# stdout esperado y recursos graficos deben conservar sus bytes exactos.
+*.out -text
+*.png binary

@@ -1,0 +1,66 @@
+# Artefactos generados por CMake, MSVC, CTest y vcpkg
+/build/
+/out/
+/vcpkg_installed/
+/Testing/
+CMakeUserPresets.json
+*.sln
+*.slnx
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.obj
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.lib
+*.exp
+
+# Configuracion local de IDE y sistema operativo
+/.vs/
+/.vscode/
+*.user
+*.suo
+*.userprefs
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Codex, agentes y memoria local: nunca forman parte del producto
+AGENTS.md
+**/AGENTS.md
+/.agents/
+/.codex/
+MEMORY.md
+**/MEMORY.md
+
+# Credenciales, secretos y configuracion privada
+.env
+.env.*
+!.env.example
+/secrets/
+/.secrets/
+/private/
+credentials*.json
+service-account*.json
+*.pem
+*.key
+*.pfx
+*.p12
+id_rsa*
+id_ed25519*
+
+# Capturas de ejecucion, trazas y archivos temporales
+*.log
+*.trace
+*.stdout
+*.stderr
+*.actual
+*.tmp
+*.temp
+*.bak
+*.zip
+
+# No se ignoran test/contracts/expected/*.out: son expectativas contractuales
+# versionadas y deben conservarse byte a byte.
