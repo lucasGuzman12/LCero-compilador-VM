@@ -1,0 +1,6 @@
+id,source
+20_error_lexico,compiler-errors/20_error_lexico.lc
+21_error_sintactico,compiler-errors/21_error_sintactico.lc
+22_variable_no_declarada,compiler-errors/22_variable_no_declarada.lc
+23_declaracion_duplicada,compiler-errors/23_declaracion_duplicada.lc
+24_variable_no_inicializada,compiler-errors/24_variable_no_inicializada.lc

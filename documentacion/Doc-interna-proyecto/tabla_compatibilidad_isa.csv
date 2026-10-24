@@ -1,0 +1,25 @@
+elemento,firma_ejemplo,comportamiento_verificado,evidencia,resultado
+Encabezado,LCERO_IR 1,"Acepta exactamente la versión contractual",VM/src/loader/parser.cpp y suite contractual VM,PASS
+Memoria,MEM 0,"Admite memoria vacía y valida rangos",manual 01 y 07; loader VM,PASS
+CONST,"CONST R2, 5","Carga un entero de precisión arbitraria",manual 01 y 04; VM/src/vm/interpreter.cpp,PASS
+LOAD,"LOAD R2, 0","Lee un slot inicializado y rechaza dirección inválida",manual 03 y 07; VM/src/vm/interpreter.cpp,PASS
+STORE,"STORE 0, R2","Escribe el valor del registro en memoria",manual 03; VM/src/vm/interpreter.cpp,PASS
+MOV,"MOV R3, R2","Copia después de leer el origen",manual 01; VM/src/vm/interpreter.cpp,PASS
+ADD,"ADD R2, R2, R3","Suma entera exacta",manual 01; VM/src/vm/interpreter.cpp,PASS
+SUB,"SUB R2, R2, R3","Resta entera exacta",manual 01; VM/src/vm/interpreter.cpp,PASS
+MUL,"MUL R2, R2, R3","Multiplicación entera exacta",manual 01 y 04; VM/src/vm/interpreter.cpp,PASS
+DIV,"DIV R2, R2, R3","Trunca hacia cero; divisor cero produce ERROR",manual 01 y 05; E2E 03 y 10; VM/src/vm/interpreter.cpp,PASS
+CMP_EQ,"CMP_EQ R2, R2, R3","Produce exactamente 0 o 1",manual 02; E2E 05; VM/src/vm/interpreter.cpp,PASS
+CMP_NE,"CMP_NE R2, R2, R3","Produce exactamente 0 o 1",manual 02; E2E 05; VM/src/vm/interpreter.cpp,PASS
+CMP_LT,"CMP_LT R2, R2, R3","Produce exactamente 0 o 1",manual 02; E2E 05; VM/src/vm/interpreter.cpp,PASS
+CMP_LE,"CMP_LE R2, R2, R3","Produce exactamente 0 o 1",manual 02; E2E 05; VM/src/vm/interpreter.cpp,PASS
+CMP_GT,"CMP_GT R2, R2, R3","Produce exactamente 0 o 1",manual 02; E2E 05; VM/src/vm/interpreter.cpp,PASS
+CMP_GE,"CMP_GE R2, R2, R3","Produce exactamente 0 o 1",manual 02; E2E 05; VM/src/vm/interpreter.cpp,PASS
+JMP,JMP inicio,"Transfiere el contador a una etiqueta válida",manual 03 y 08; VM/src/vm/interpreter.cpp,PASS
+JZ,"JZ R2, fin","Salta sólo cuando el valor es cero",manual 03 y 08; VM/src/vm/interpreter.cpp,PASS
+LABEL,LABEL inicio,"Define un destino único y no ejecutable",manual 03 y 08; loader VM,PASS
+PRINT,PRINT R2,"Imprime decimal exacto seguido de salto de línea",manual 01 y 04; VM/src/vm/interpreter.cpp,PASS
+HALT,HALT,"Finaliza con HALT y código 0",todos los casos normales; VM/src/vm/interpreter.cpp,PASS
+Registro no inicializado,PRINT R2,"Finaliza con ERROR antes de contar la instrucción",manual 06,PASS
+Límite de pasos,--max-steps 4,"Finaliza con LIMIT; no decide no terminación",manual 08,PASS
+

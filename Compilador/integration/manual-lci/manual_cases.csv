@@ -1,0 +1,9 @@
+id,file,expected_stdout,check_exit,run_exit,expected_status,max_steps
+01_aritmetica_mov,01_aritmetica_mov.lci,expected/01_aritmetica_mov.out,0,0,HALT,1000
+02_comparaciones,02_comparaciones.lci,expected/02_comparaciones.out,0,0,HALT,1000
+03_memoria_control,03_memoria_control.lci,expected/03_memoria_control.out,0,0,HALT,1000
+04_entero_grande,04_entero_grande.lci,expected/04_entero_grande.out,0,0,HALT,1000
+05_division_por_cero,05_division_por_cero.lci,expected/05_division_por_cero.out,0,2,ERROR,1000
+06_registro_no_inicializado,06_registro_no_inicializado.lci,expected/06_registro_no_inicializado.out,0,2,ERROR,1000
+07_direccion_invalida,07_direccion_invalida.lci,expected/07_direccion_invalida.out,3,3,ERROR_DE_CARGA,1000
+08_limite_pasos,08_limite_pasos.lci,expected/08_limite_pasos.out,0,4,LIMIT,4

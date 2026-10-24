@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+<rect width="100%" height="100%" fill="white"/>
+<text x="600" y="38" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="25" font-weight="600">Costo del backend optimizado segÃºn temporales</text>
+<line x1="105" y1="80" x2="105" y2="620" stroke="#e5e7eb"/>
+<line x1="105" y1="620" x2="1160" y2="620" stroke="#e5e7eb"/>
+<text x="105" y="645" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13">0</text>
+<text x="93" y="625" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="13">0</text>
+<line x1="316" y1="80" x2="316" y2="620" stroke="#e5e7eb"/>
+<line x1="105" y1="512" x2="1160" y2="512" stroke="#e5e7eb"/>
+<text x="316" y="645" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13">96.4</text>
+<text x="93" y="517" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="13">0.31</text>
+<line x1="527" y1="80" x2="527" y2="620" stroke="#e5e7eb"/>
+<line x1="105" y1="404" x2="1160" y2="404" stroke="#e5e7eb"/>
+<text x="527" y="645" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13">192.8</text>
+<text x="93" y="409" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="13">0.62</text>
+<line x1="738" y1="80" x2="738" y2="620" stroke="#e5e7eb"/>
+<line x1="105" y1="296" x2="1160" y2="296" stroke="#e5e7eb"/>
+<text x="738" y="645" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13">289.2</text>
+<text x="93" y="301" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="13">0.93</text>
+<line x1="949" y1="80" x2="949" y2="620" stroke="#e5e7eb"/>
+<line x1="105" y1="188" x2="1160" y2="188" stroke="#e5e7eb"/>
+<text x="949" y="645" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13">385.6</text>
+<text x="93" y="193" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="13">1.24</text>
+<line x1="1160" y1="80" x2="1160" y2="620" stroke="#e5e7eb"/>
+<line x1="105" y1="80" x2="1160" y2="80" stroke="#e5e7eb"/>
+<text x="1160" y="645" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13">482</text>
+<text x="93" y="85" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="13">1.55</text>
+<line x1="105" y1="80" x2="105" y2="620" stroke="#111827" stroke-width="2"/>
+<line x1="105" y1="620" x2="1160" y2="620" stroke="#111827" stroke-width="2"/>
+<text x="632.5" y="685" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="17">Temporales virtuales</text>
+<text x="28" y="350" text-anchor="middle" transform="rotate(-90 28 350)" font-family="Segoe UI, sans-serif" font-size="17">Mediana del backend (ms)</text>
+<circle cx="120" cy="100" r="6" fill="#7c3aed"/><text x="133" y="105" font-family="Segoe UI, sans-serif" font-size="14">Backend optimizado</text>
+<circle cx="175.041" cy="548.736" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>secuencia-10, aristas=10: x=32, y=0.205</title></circle>
+<circle cx="372.033" cy="407.497" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>secuencia-40, aristas=40: x=122, y=0.61</title></circle>
+<circle cx="634.689" cy="339.961" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>secuencia-80, aristas=80: x=242, y=0.804</title></circle>
+<circle cx="1160" cy="120" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>secuencia-160, aristas=160: x=482, y=1.435</title></circle>
+<circle cx="168.475" cy="563.093" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>variables-10, aristas=9: x=29, y=0.163</title></circle>
+<circle cx="266.971" cy="504.618" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>variables-25, aristas=24: x=74, y=0.331</title></circle>
+<circle cx="431.131" cy="444.54" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>variables-50, aristas=49: x=149, y=0.504</title></circle>
+<circle cx="759.45" cy="286.504" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>variables-100, aristas=99: x=299, y=0.957</title></circle>
+<circle cx="120.322" cy="585.222" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>presion-4, aristas=5: x=7, y=0.1</title></circle>
+<circle cx="137.832" cy="573.338" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>presion-8, aristas=17: x=15, y=0.134</title></circle>
+<circle cx="172.853" cy="544.031" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>presion-16, aristas=49: x=31, y=0.218</title></circle>
+<circle cx="242.894" cy="482.35" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>presion-32, aristas=129: x=63, y=0.395</title></circle>
+<circle cx="175.041" cy="551.593" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>control-5, aristas=10: x=32, y=0.196</title></circle>
+<circle cx="240.705" cy="505.141" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>control-10, aristas=20: x=62, y=0.33</title></circle>
+<circle cx="372.033" cy="427.778" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>control-20, aristas=40: x=122, y=0.552</title></circle>
+<circle cx="634.689" cy="252.562" r="6" fill="#7c3aed" stroke="white" stroke-width="1.5"><title>control-40, aristas=80: x=242, y=1.054</title></circle>
+<text x="1165" y="702" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="11" fill="#4b5563">Medianas de ejecuciones Release x64; ver CSV para datos originales.</text>
+</svg>

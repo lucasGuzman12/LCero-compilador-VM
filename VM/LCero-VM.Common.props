@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <OutDir>$(MSBuildThisFileDirectory)bin\$(Platform)\$(Configuration)\</OutDir>
+    <LocalDebuggerWorkingDirectory>$(MSBuildThisFileDirectory)</LocalDebuggerWorkingDirectory>
+    <LCeroVcpkgRoot Condition="'$(VCPKG_ROOT)'!=''">$(VCPKG_ROOT)</LCeroVcpkgRoot>
+    <LCeroVcpkgRoot Condition="'$(LCeroVcpkgRoot)'==''">$([System.IO.Path]::GetFullPath('$(VCToolsInstallDir)..\..\..\vcpkg'))</LCeroVcpkgRoot>
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+    <VcpkgManifestInstall>true</VcpkgManifestInstall>
+    <VcpkgManifestRoot>$(MSBuildThisFileDirectory)</VcpkgManifestRoot>
+    <VcpkgInstalledDir>$(MSBuildThisFileDirectory)vcpkg_installed\</VcpkgInstalledDir>
+    <VcpkgTriplet>x64-windows</VcpkgTriplet>
+  </PropertyGroup>
+  <Import Project="$(LCeroVcpkgRoot)\scripts\buildsystems\msbuild\vcpkg.props"
+          Condition="Exists('$(LCeroVcpkgRoot)\scripts\buildsystems\msbuild\vcpkg.props')" />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='Debug'">_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='Release'">NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>

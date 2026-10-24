@@ -10,6 +10,8 @@
 #include "lcero/parser/parser.hpp"
 #include "lcero/semantic/semantic_analyzer.hpp"
 
+#include <chrono>
+
 namespace lcero {
 
 CompilationResult Compiler::run(
@@ -17,60 +19,84 @@ CompilationResult Compiler::run(
     common::DiagnosticBag& diagnostics) const {
     CompilationResult result;
     result.backend = options.backend;
+    using Clock = std::chrono::steady_clock;
+    const auto pipeline_start = Clock::now();
+    const auto elapsed_ns = [](const Clock::time_point start) {
+        return static_cast<std::uint64_t>(
+            std::chrono::duration_cast<std::chrono::nanoseconds>(
+                Clock::now() - start).count());
+    };
+    const auto finish = [&]() {
+        result.total_ns = elapsed_ns(pipeline_start);
+        return result;
+    };
 
     const common::OutputArtifact output_artifact;
+    auto phase_start = Clock::now();
     if (!output_artifact.invalidate_previous(options.output_path, diagnostics)) {
-        return result;
+        result.output_invalidation_ns = elapsed_ns(phase_start);
+        return finish();
     }
+    result.output_invalidation_ns = elapsed_ns(phase_start);
 
     const common::SourceReader source_reader;
+    phase_start = Clock::now();
     const auto source = source_reader.read(options.input_path, diagnostics);
+    result.source_read_ns = elapsed_ns(phase_start);
     if (!source.has_value()) {
-        return result;
+        return finish();
     }
     result.source_read_completed = true;
     result.source_bytes = source->content.size();
 
+    phase_start = Clock::now();
     const lexer::Lexer lexer;
     const auto lex_result = lexer.tokenize(source.value(), diagnostics);
+    result.lexical_analysis_ns = elapsed_ns(phase_start);
     const auto& automata = lexer.automata();
     result.token_count = lex_result.tokens.size();
     result.nfa_state_count = automata.nfa().state_count();
     result.determinized_state_count = automata.determinized_dfa().state_count();
     result.minimized_state_count = automata.minimized_dfa().state_count();
     if (!lex_result.succeeded) {
-        return result;
+        return finish();
     }
     result.lexical_analysis_completed = true;
 
+    phase_start = Clock::now();
     parser::Parser parser;
     auto parse_result = parser.parse(lex_result.tokens, source->path, diagnostics);
+    result.syntactic_analysis_ns = elapsed_ns(phase_start);
     if (!parse_result.succeeded) {
-        return result;
+        return finish();
     }
     result.syntactic_analysis_completed = true;
     result.declaration_count = parse_result.program->declarations.size();
     result.statement_count = parse_result.program->statements.size();
 
+    phase_start = Clock::now();
     semantic::SemanticAnalyzer semantic_analyzer;
     auto semantic_result = semantic_analyzer.analyze(
         *parse_result.program, source->path, diagnostics);
+    result.semantic_analysis_ns = elapsed_ns(phase_start);
     result.symbol_count = semantic_result.symbol_table.size();
     result.initialized_variable_count =
         semantic_result.definitely_initialized.size();
     if (!semantic_result.succeeded) {
-        return result;
+        return finish();
     }
     result.semantic_analysis_completed = true;
 
+    phase_start = Clock::now();
     ir::Generator ir_generator;
     auto generation_result = ir_generator.generate(
         *parse_result.program,
         semantic_result.symbol_table,
         source->path,
         diagnostics);
+    result.ir_generation_ns = elapsed_ns(phase_start);
     if (!generation_result.succeeded) {
-        return result;
+        return finish();
     }
     result.ir_generation_completed = true;
     result.ir_instruction_count = generation_result.program.instructions.size();
@@ -78,6 +104,7 @@ CompilationResult Compiler::run(
     result.label_count = generation_result.program.label_count;
 
     ir::BackendResult backend_result;
+    phase_start = Clock::now();
     if (options.backend == BackendKind::Optimized) {
         const ir::OptimizedBackend backend;
         backend_result = backend.emit(
@@ -87,8 +114,9 @@ CompilationResult Compiler::run(
         backend_result = backend.emit(
             generation_result.program, options.output_path, diagnostics);
     }
+    result.backend_ns = elapsed_ns(phase_start);
     if (!backend_result.succeeded) {
-        return result;
+        return finish();
     }
     result.optimization_completed = options.backend == BackendKind::Optimized;
     result.memory_slot_count = backend_result.memory_slot_count;
@@ -103,18 +131,24 @@ CompilationResult Compiler::run(
     result.store_count = backend_result.store_count;
     result.liveness_iterations = backend_result.liveness_iterations;
 
+    phase_start = Clock::now();
     const ir::LciValidator validator;
     if (!validator.validate(backend_result.text, options.output_path, diagnostics)) {
-        return result;
+        result.lci_validation_ns = elapsed_ns(phase_start);
+        return finish();
     }
+    result.lci_validation_ns = elapsed_ns(phase_start);
+    phase_start = Clock::now();
     if (!output_artifact.publish(
             options.output_path, backend_result.text, diagnostics)) {
-        return result;
+        result.publication_ns = elapsed_ns(phase_start);
+        return finish();
     }
+    result.publication_ns = elapsed_ns(phase_start);
 
     result.lci_emission_completed = true;
     result.status = CompilationStatus::Succeeded;
-    return result;
+    return finish();
 }
 
 } // namespace lcero

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{B4D1E94A-8B60-4D8B-9F3B-22E43C6E56B2}</ProjectGuid>
+    <RootNamespace>LCeroVMCore</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType><UseDebugLibraries>true</UseDebugLibraries><PlatformToolset>v145</PlatformToolset><CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><PlatformToolset>v145</PlatformToolset><WholeProgramOptimization>true</WholeProgramOptimization><CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="LCero-VM.Common.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup><IntDir>$(ProjectDir)obj\Core\$(Platform)\$(Configuration)\</IntDir><TargetName>LCero.VM.Core</TargetName></PropertyGroup>
+  <ItemGroup>
+    <ClCompile Include="src\vm\cli.cpp" />
+    <ClCompile Include="src\vm\diagnostics.cpp" />
+    <ClCompile Include="src\vm\execution_state.cpp" />
+    <ClCompile Include="src\vm\instruction.cpp" />
+    <ClCompile Include="src\vm\interpreter.cpp" />
+    <ClCompile Include="src\vm\ir_loader.cpp" />
+    <ClCompile Include="src\vm\ir_validator.cpp" />
+    <ClCompile Include="src\vm\trace.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\lcero\vm\cli.hpp" />
+    <ClInclude Include="include\lcero\vm\diagnostics.hpp" />
+    <ClInclude Include="include\lcero\vm\execution_state.hpp" />
+    <ClInclude Include="include\lcero\vm\instruction.hpp" />
+    <ClInclude Include="include\lcero\vm\interpreter.hpp" />
+    <ClInclude Include="include\lcero\vm\ir_loader.hpp" />
+    <ClInclude Include="include\lcero\vm\ir_validator.hpp" />
+    <ClInclude Include="include\lcero\vm\trace.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets"><Import Project="LCero-VM.Vcpkg.targets" /></ImportGroup>
+</Project>

@@ -1,0 +1,2 @@
+id,source,expected_exit,expected_status,max_steps
+12_bucle_no_terminante,e2e/12_bucle_no_terminante.lc,4,LIMIT,64

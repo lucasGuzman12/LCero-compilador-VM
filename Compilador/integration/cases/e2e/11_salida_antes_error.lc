@@ -1,0 +1,4 @@
+int cero;
+cero = 0;
+print(8);
+print(1 / cero);

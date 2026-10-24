@@ -89,6 +89,11 @@ std::string read_text(const std::filesystem::path& path) {
     return buffer.str();
 }
 
+std::string normalize_line_endings(std::string text) {
+    text.erase(std::remove(text.begin(), text.end(), '\r'), text.end());
+    return text;
+}
+
 void create_project_marker(const std::filesystem::path& root) {
     write_text(root / "LCero-Compilador.vcxproj", "<Project />");
 }
@@ -1870,14 +1875,81 @@ void test_documented_grammar_tables_match_analysis() {
 
     const auto project_root = std::filesystem::path(__FILE__).parent_path().parent_path();
     const auto grammar_docs = project_root / "docs/gramatica";
-    require(read_text(grammar_docs / "first.csv") == first_document.str(),
+    require(normalize_line_endings(read_text(grammar_docs / "first.csv")) ==
+                first_document.str(),
             "first.csv no coincide con el calculo ejecutable.");
-    require(read_text(grammar_docs / "follow.csv") == follow_document.str(),
+    require(normalize_line_endings(read_text(grammar_docs / "follow.csv")) ==
+                follow_document.str(),
             "follow.csv no coincide con el calculo ejecutable.");
-    require(read_text(grammar_docs / "select.csv") == select_document.str(),
+    require(normalize_line_endings(read_text(grammar_docs / "select.csv")) ==
+                select_document.str(),
             "select.csv no coincide con el calculo ejecutable.");
-    require(read_text(grammar_docs / "tabla_ll1.csv") == table_document.str(),
+    require(normalize_line_endings(read_text(grammar_docs / "tabla_ll1.csv")) ==
+                table_document.str(),
             "tabla_ll1.csv no coincide con la tabla ejecutable.");
+}
+
+void test_compilation_profiling_is_structured_and_silent() {
+    TemporaryDirectory temporary;
+    const auto input_path = temporary.path() / "perfil.lc";
+    const auto output_path = temporary.path() / "perfil.lci";
+    write_text(input_path, "int x; x = (1 + 2) * 3; print(x);\n");
+
+    lcero::common::DiagnosticBag diagnostics;
+    const lcero::Compiler compiler;
+    const auto result = compiler.run(
+        lcero::CompilerOptions{
+            input_path,
+            output_path,
+            lcero::BackendKind::Optimized
+        },
+        diagnostics);
+
+    require(result.status == lcero::CompilationStatus::Succeeded,
+            "El caso de profiling debe compilar.");
+    require(result.total_ns > 0 && result.source_read_ns > 0 &&
+                result.lexical_analysis_ns > 0 && result.syntactic_analysis_ns > 0 &&
+                result.semantic_analysis_ns > 0 && result.ir_generation_ns > 0 &&
+                result.backend_ns > 0 && result.lci_validation_ns > 0 &&
+                result.publication_ns > 0,
+            "Las fases deben registrar duraciones positivas en nanosegundos.");
+    require(!diagnostics.has_errors(),
+            "La instrumentacion no debe producir diagnosticos.");
+}
+
+void print_profile_case(
+    const std::filesystem::path& input_path,
+    const lcero::BackendKind backend,
+    const std::filesystem::path& output_path) {
+    lcero::common::DiagnosticBag diagnostics;
+    const lcero::Compiler compiler;
+    const auto result = compiler.run(
+        lcero::CompilerOptions{input_path, output_path, backend}, diagnostics);
+    if (result.status != lcero::CompilationStatus::Succeeded) {
+        throw std::runtime_error("No se pudo compilar el caso solicitado para profiling.");
+    }
+
+    std::cout
+        << "backend,total_ns,invalidation_ns,read_ns,lexer_ns,parser_ns,semantic_ns,"
+           "ir_generation_ns,backend_ns,validation_ns,publication_ns,source_bytes,"
+           "tokens,declarations,statements,ir_instructions,temporaries,labels,"
+           "physical_instructions,memory_slots,loads,stores,cfg_blocks,cfg_edges,"
+           "interference_vertices,interference_edges,spills,liveness_iterations\n"
+        << (backend == lcero::BackendKind::Optimized ? "optimized" : "reference") << ','
+        << result.total_ns << ',' << result.output_invalidation_ns << ','
+        << result.source_read_ns << ',' << result.lexical_analysis_ns << ','
+        << result.syntactic_analysis_ns << ',' << result.semantic_analysis_ns << ','
+        << result.ir_generation_ns << ',' << result.backend_ns << ','
+        << result.lci_validation_ns << ',' << result.publication_ns << ','
+        << result.source_bytes << ',' << result.token_count << ','
+        << result.declaration_count << ',' << result.statement_count << ','
+        << result.ir_instruction_count << ',' << result.virtual_temporary_count << ','
+        << result.label_count << ',' << result.emitted_instruction_count << ','
+        << result.memory_slot_count << ',' << result.load_count << ','
+        << result.store_count << ',' << result.cfg_block_count << ','
+        << result.cfg_edge_count << ',' << result.interference_vertex_count << ','
+        << result.interference_edge_count << ',' << result.spilled_temporary_count << ','
+        << result.liveness_iterations << '\n';
 }
 
 void print_optimizer_report() {
@@ -2053,6 +2125,25 @@ void print_automaton_report() {
 } // namespace
 
 int main(const int argc, char* argv[]) {
+    if (argc == 5 && std::string(argv[1]) == "--profile-case") {
+        const std::string backend(argv[3]);
+        if (backend != "reference" && backend != "optimized") {
+            std::cerr << "Backend de profiling invalido.\n";
+            return 2;
+        }
+        try {
+            print_profile_case(
+                argv[2],
+                backend == "optimized"
+                    ? lcero::BackendKind::Optimized
+                    : lcero::BackendKind::Reference,
+                argv[4]);
+            return 0;
+        } catch (const std::exception& exception) {
+            std::cerr << exception.what() << '\n';
+            return 1;
+        }
+    }
     if (argc == 2 && std::string(argv[1]) == "--automaton-report") {
         print_automaton_report();
         return 0;
@@ -2136,7 +2227,8 @@ int main(const int argc, char* argv[]) {
         {"literal grande en backend optimizado", test_optimized_backend_preserves_large_decimal_literal},
         {"seleccion de backend por argumentos", test_backend_command_line_selection},
         {"menu interactivo simulado", test_interactive_menu_handles_all_inputs},
-        {"pipeline optimizado integrado", test_compiler_pipeline_selects_optimized_backend}
+        {"pipeline optimizado integrado", test_compiler_pipeline_selects_optimized_backend},
+        {"profiling estructurado y silencioso", test_compilation_profiling_is_structured_and_silent}
     };
 
     int failures = 0;

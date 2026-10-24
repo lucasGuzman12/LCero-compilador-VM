@@ -1,0 +1,9 @@
+int a;
+int b;
+a = (2 + 3) * (10 - 4);
+b = 20 / 3;
+print(a);
+print(b);
+print(20 - 5 - 3);
+print(2 + 3 * 4);
+print((2 + 3) * 4);

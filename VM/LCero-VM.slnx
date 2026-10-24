@@ -1,0 +1,12 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="LCero-VM.vcxproj" Id="a3c0d839-7a5f-4c7a-8e2a-11d32b5d45a1" />
+  <Project Path="LCero-VM.Core.vcxproj" Id="b4d1e94a-8b60-4d8b-9f3b-22e43c6e56b2" />
+  <Project Path="tests/LCero-VM.Cli.Tests.vcxproj" Id="c5e2fa5b-9c71-4e9c-a04c-33f54d7f67c3" />
+  <Project Path="tests/LCero-VM.Model.Tests.vcxproj" Id="d6f30b6c-ad82-4fad-b15d-44a65e8078d4" />
+  <Project Path="tests/LCero-VM.Loader.Tests.vcxproj" Id="e7041c7d-be93-40be-c26e-55b76f9189e5" />
+  <Project Path="tests/LCero-VM.Interpreter.Tests.vcxproj" Id="f8152d8e-cfa4-41cf-d37f-66c870a29af6" />
+  <Project Path="tests/LCero-VM.Trace.Tests.vcxproj" Id="09263e9f-d0b5-42d0-e480-77d981b3ab07" />
+</Solution>

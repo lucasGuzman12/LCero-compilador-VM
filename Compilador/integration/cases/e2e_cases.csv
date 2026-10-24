@@ -1,0 +1,12 @@
+id,source,expected_stdout,expected_exit,expected_status
+01_constantes_salida,e2e/01_constantes_salida.lc,expected/01_constantes_salida.out,0,HALT
+02_aritmetica,e2e/02_aritmetica.lc,expected/02_aritmetica.out,0,HALT
+03_division_signos,e2e/03_division_signos.lc,expected/03_division_signos.out,0,HALT
+04_variables,e2e/04_variables.lc,expected/04_variables.out,0,HALT
+05_comparaciones,e2e/05_comparaciones.lc,expected/05_comparaciones.out,0,HALT
+06_condicionales_anidados,e2e/06_condicionales_anidados.lc,expected/06_condicionales_anidados.out,0,HALT
+07_bucles_anidados,e2e/07_bucles_anidados.lc,expected/07_bucles_anidados.out,0,HALT
+08_spilling,e2e/08_spilling.lc,expected/08_spilling.out,0,HALT
+09_enteros_grandes,e2e/09_enteros_grandes.lc,expected/09_enteros_grandes.out,0,HALT
+10_division_por_cero,e2e/10_division_por_cero.lc,expected/10_division_por_cero.out,2,ERROR
+11_salida_antes_error,e2e/11_salida_antes_error.lc,expected/11_salida_antes_error.out,2,ERROR

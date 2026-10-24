@@ -1,0 +1,15 @@
+fase,parametros,tiempo,espacio,alcance
+Lectura,n,Theta(n),Theta(n),"Debe copiar todos los bytes"
+Lexer,n y t,Theta(n),O(n+t),"AFD y alfabeto fijos; tokens y lexemas materializados"
+Parser LL(1) y AST,t A n h,Theta(t),O(A+n+h),"Sin backtracking; h es profundidad recursiva"
+Semántica,A V C, O(A*V*log(V)+C),O(A*V+h+C_s),"Mapas y conjuntos; registros de transferencia conservan estados"
+Generación RI,A V D,O(A*log(V)+D),O(N+T+V+D),"D es longitud decimal total"
+Backend de referencia,N Q,Theta(N+Q),O(V+T+Q),"Emisión explícita con slots por temporal"
+CFG,N L E,O(N*log(N+L)+E),O(N+B+E),"Mapas de etiquetas y conjuntos de líderes"
+Vivacidad,P B E T,O(P*(B+E)*T+N*T),O(N*T+B*T),"Cota abstracta; std::set añade factores logarítmicos"
+Interferencia,N T L_i,O(sum(L_i^2*log(T))+N*T*log(T)),O(T+G_E),"Peor caso O(N*T^2*log(T))"
+Chaitin,T G_E,O(T^2+G_E*log(T)),O(T+G_E),"Heurística implementada; no garantiza optimalidad"
+Emisión con spills,N S Q,O(N+S+Q),O(V+S+Q),"S representa materializaciones de spill"
+Validador LCI,Q L J,O(Q+(L+J)*log(L)),O(Q+L+J),"Etiquetas ordenadas y referencias"
+Publicación,Q,Theta(Q),O(Q),"Temporal, verificación y renombrado"
+

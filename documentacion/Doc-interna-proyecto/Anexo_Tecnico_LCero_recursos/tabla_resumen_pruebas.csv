@@ -1,0 +1,8 @@
+categoria,ejecutadas,aprobadas,objetivo,evidencia,observacion
+Suite del compilador,71,71,"Infraestructura, lexer, parser, AST, semántica, RI, backends, Chaitin, menú y validador",Compilador/tests/test_main.cpp,"Incluye una prueba nueva de instrumentación estructurada"
+Casos manuales ISA,8,8,"Separar comportamiento de la VM de la traducción del compilador",Compilador/integration/results/manual_isa_results.csv,"Agrupan la cobertura de las 18 instrucciones; no son toda la suite propia de la VM"
+Integración extremo a extremo,34,34,"Ejecutar ambos backends, errores dinámicos, límite de pasos y rechazos",Compilador/integration/results/integration_results.csv,"18 HALT, 4 ERROR, 2 LIMIT y 10 rechazos del compilador"
+Fixtures contractuales VM,40,40,"Validar carga, ejecución y estados de LCERO_IR 1",VM/test/contracts/expected_cases.json,"15 HALT, 3 LIMIT, 6 ERROR y 16 ERROR_DE_CARGA"
+Bucle no terminante escrito en LCI,1,1,"Observar LIMIT bajo presupuesto",VM/test/contracts/limit/17_bucle_bajo_limite.lci,"No demuestra infinitud"
+Bucle no terminante desde fuente LC,2,2,"Recorrido .lc a compilador a .lci a VM con LIMIT",Compilador/integration/cases/e2e/12_bucle_no_terminante.lc,"Referencia y optimizado: LIMIT en 64 pasos, exit 4, stdout vacío y SHA-256 de copia verificado"
+

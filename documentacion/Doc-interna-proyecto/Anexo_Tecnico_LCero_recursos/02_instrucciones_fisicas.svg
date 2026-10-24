@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+<rect width="100%" height="100%" fill="white"/>
+<text x="600" y="38" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="25" font-weight="600">Instrucciones fÃ­sicas emitidas</text>
+<line x1="105" y1="80" x2="105" y2="620" stroke="#e5e7eb"/>
+<line x1="105" y1="620" x2="1160" y2="620" stroke="#e5e7eb"/>
+<text x="105" y="645" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13">0</text>
+<text x="93" y="625" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="13">0</text>
+<line x1="316" y1="80" x2="316" y2="620" stroke="#e5e7eb"/>
+<line x1="105" y1="512" x2="1160" y2="512" stroke="#e5e7eb"/>
+<text x="316" y="645" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13">515.4</text>
+<text x="93" y="517" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="13">347.544</text>
+<line x1="527" y1="80" x2="527" y2="620" stroke="#e5e7eb"/>
+<line x1="105" y1="404" x2="1160" y2="404" stroke="#e5e7eb"/>
+<text x="527" y="645" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13">1030.8</text>
+<text x="93" y="409" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="13">695.088</text>
+<line x1="738" y1="80" x2="738" y2="620" stroke="#e5e7eb"/>
+<line x1="105" y1="296" x2="1160" y2="296" stroke="#e5e7eb"/>
+<text x="738" y="645" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13">1546.2</text>
+<text x="93" y="301" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="13">1042.632</text>
+<line x1="949" y1="80" x2="949" y2="620" stroke="#e5e7eb"/>
+<line x1="105" y1="188" x2="1160" y2="188" stroke="#e5e7eb"/>
+<text x="949" y="645" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13">2061.6</text>
+<text x="93" y="193" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="13">1390.176</text>
+<line x1="1160" y1="80" x2="1160" y2="620" stroke="#e5e7eb"/>
+<line x1="105" y1="80" x2="1160" y2="80" stroke="#e5e7eb"/>
+<text x="1160" y="645" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13">2577</text>
+<text x="93" y="85" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="13">1737.72</text>
+<line x1="105" y1="80" x2="105" y2="620" stroke="#111827" stroke-width="2"/>
+<line x1="105" y1="620" x2="1160" y2="620" stroke="#111827" stroke-width="2"/>
+<text x="632.5" y="685" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="17">TamaÃ±o fuente (bytes)</text>
+<text x="28" y="350" text-anchor="middle" transform="rotate(-90 28 350)" font-family="Segoe UI, sans-serif" font-size="17">Instrucciones</text>
+<circle cx="120" cy="100" r="6" fill="#2563eb"/><text x="133" y="105" font-family="Segoe UI, sans-serif" font-size="14">Normal (referencia)</text>
+<circle cx="164.362" cy="586.128" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>secuencia-10: x=145, y=109</title></circle>
+<circle cx="311.742" cy="492.902" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>secuencia-40: x=505, y=409</title></circle>
+<circle cx="508.25" cy="368.602" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>secuencia-80: x=985, y=809</title></circle>
+<circle cx="901.265" cy="120" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>secuencia-160: x=1945, y=1609</title></circle>
+<circle cx="202.026" cy="589.236" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>variables-10: x=237, y=99</title></circle>
+<circle cx="361.688" cy="542.623" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>variables-25: x=627, y=249</title></circle>
+<circle cx="627.792" cy="464.935" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>variables-50: x=1277, y=499</title></circle>
+<circle cx="1160" cy="309.559" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>variables-100: x=2577, y=999</title></circle>
+<circle cx="121.376" cy="612.853" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>presion-4: x=40, y=23</title></circle>
+<circle cx="137.751" cy="605.395" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>presion-8: x=80, y=47</title></circle>
+<circle cx="173.368" cy="590.479" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>presion-16: x=167, y=95</title></circle>
+<circle cx="245.421" cy="560.646" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>presion-32: x=343, y=191</title></circle>
+<circle cx="170.503" cy="586.128" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>control-5: x=160, y=109</title></circle>
+<circle cx="226.18" cy="555.053" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>control-10: x=296, y=209</title></circle>
+<circle cx="340.809" cy="492.902" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>control-20: x=576, y=409</title></circle>
+<circle cx="570.068" cy="368.602" r="6" fill="#2563eb" stroke="white" stroke-width="1.5"><title>control-40: x=1136, y=809</title></circle>
+<circle cx="120" cy="122" r="6" fill="#dc2626"/><text x="133" y="127" font-family="Segoe UI, sans-serif" font-size="14">Optimizado (Chaitin)</text>
+<circle cx="164.362" cy="606.016" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>secuencia-10: x=145, y=45</title></circle>
+<circle cx="311.742" cy="568.726" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>secuencia-40: x=505, y=165</title></circle>
+<circle cx="508.25" cy="519.006" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>secuencia-80: x=985, y=325</title></circle>
+<circle cx="901.265" cy="419.565" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>secuencia-160: x=1945, y=645</title></circle>
+<circle cx="202.026" cy="607.259" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>variables-10: x=237, y=41</title></circle>
+<circle cx="361.688" cy="588.614" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>variables-25: x=627, y=101</title></circle>
+<circle cx="627.792" cy="557.539" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>variables-50: x=1277, y=201</title></circle>
+<circle cx="1160" cy="495.388" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>variables-100: x=2577, y=401</title></circle>
+<circle cx="121.376" cy="616.582" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>presion-4: x=40, y=11</title></circle>
+<circle cx="137.751" cy="612.853" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>presion-8: x=80, y=23</title></circle>
+<circle cx="173.368" cy="605.395" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>presion-16: x=167, y=47</title></circle>
+<circle cx="245.421" cy="590.479" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>presion-32: x=343, y=95</title></circle>
+<circle cx="170.503" cy="606.016" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>control-5: x=160, y=45</title></circle>
+<circle cx="226.18" cy="593.586" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>control-10: x=296, y=85</title></circle>
+<circle cx="340.809" cy="568.726" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>control-20: x=576, y=165</title></circle>
+<circle cx="570.068" cy="519.006" r="6" fill="#dc2626" stroke="white" stroke-width="1.5"><title>control-40: x=1136, y=325</title></circle>
+<text x="1165" y="702" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="11" fill="#4b5563">Medianas de ejecuciones Release x64; ver CSV para datos originales.</text>
+</svg>

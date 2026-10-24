@@ -1,0 +1,5 @@
+LCERO_IR 1
+MEM 0
+LABEL ciclo
+JMP ciclo
+HALT

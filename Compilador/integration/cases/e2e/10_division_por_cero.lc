@@ -1,0 +1,3 @@
+int cero;
+cero = 0;
+print(7 / cero);

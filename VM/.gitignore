@@ -1,13 +1,11 @@
 # Artefactos generados por CMake, MSVC, CTest y vcpkg
 /build/
+/bin/
+/obj/
 /out/
 /vcpkg_installed/
 /Testing/
 CMakeUserPresets.json
-*.sln
-*.slnx
-*.vcxproj
-*.vcxproj.filters
 *.vcxproj.user
 *.obj
 *.pdb

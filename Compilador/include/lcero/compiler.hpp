@@ -4,6 +4,7 @@
 #include "lcero/compiler_options.hpp"
 
 #include <cstddef>
+#include <cstdint>
 
 namespace lcero {
 
@@ -45,6 +46,18 @@ struct CompilationResult {
     std::size_t load_count = 0;
     std::size_t store_count = 0;
     std::size_t liveness_iterations = 0;
+    // Instrumentacion para profiling. Se conserva en el resultado estructurado
+    // y no se imprime en la consola de uso cotidiano.
+    std::uint64_t output_invalidation_ns = 0;
+    std::uint64_t source_read_ns = 0;
+    std::uint64_t lexical_analysis_ns = 0;
+    std::uint64_t syntactic_analysis_ns = 0;
+    std::uint64_t semantic_analysis_ns = 0;
+    std::uint64_t ir_generation_ns = 0;
+    std::uint64_t backend_ns = 0;
+    std::uint64_t lci_validation_ns = 0;
+    std::uint64_t publication_ns = 0;
+    std::uint64_t total_ns = 0;
 };
 
 // Punto de coordinacion del pipeline: invalida la salida anterior, analiza el

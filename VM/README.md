@@ -36,7 +36,19 @@ Para conservar la variable en futuras terminales:
 
 Reabra la terminal después de persistirla. Si usa un vcpkg independiente, asigne a `VCPKG_ROOT` la ruta resuelta de esa instalación. Los archivos CMake del proyecto no codifican rutas de usuarios ni de equipos concretos.
 
-## Configuración, compilación y prueba
+## Abrir como proyecto de Visual Studio
+
+La carpeta incluye una solución nativa; no es necesario abrirla como carpeta CMake:
+
+1. En Visual Studio seleccione **Archivo > Abrir > Proyecto o solución**.
+2. Abra `LCero-VM.slnx`, ubicado en esta carpeta.
+3. Elija la configuración `Debug` y la plataforma `x64`.
+4. En el Explorador de soluciones, haga clic derecho sobre `LCero-VM` y seleccione **Establecer como proyecto de inicio**.
+5. Use **Iniciar sin depurar** (`Ctrl+F5`). El ejemplo `Source/programa.lci` imprime `5`.
+
+La primera compilación restaura Boost automáticamente mediante `vcpkg.json`. Los ejecutables quedan en `bin/x64/Debug` o `bin/x64/Release`. La solución también contiene cinco proyectos de pruebas que pueden iniciarse individualmente; los de loader, intérprete y trazas ya tienen configurada la ruta de `test/contracts` como argumento de depuración.
+
+## Configuración, compilación y prueba con CMake
 
 Desde esta carpeta:
 
@@ -61,9 +73,9 @@ También se puede ejecutar `./scripts/build-debug.ps1`; localiza la copia de CMa
 
 Los ejecutables quedan en `build/bin/Debug/lcero-vm.exe` y `build/bin/Release/lcero-vm.exe`.
 
-### Ejecutar con el botón de Visual Studio
+### Ejecutar desde una carpeta CMake
 
-Abra la carpeta `VM` en Visual Studio, seleccione `lcero_vm` como proyecto de inicio
+Si prefiere el flujo alternativo de CMake, abra la carpeta `VM` en Visual Studio, seleccione `lcero_vm` como proyecto de inicio
 y ejecute sin argumentos. La VM abre `Source/programa.lci` dentro de este proyecto,
 lo valida y lo ejecuta; el ejemplo incluido imprime `5`. Puede reemplazar ese
 archivo por cualquier `.lci` generado por el compilador, sin cambiar la VM.
