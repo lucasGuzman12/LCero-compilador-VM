@@ -34,7 +34,12 @@ endif()
 
 add_executable(lcero_vm src/vm/main.cpp)
 target_link_libraries(lcero_vm PRIVATE lcero_vm_core)
+target_sources(lcero_vm PRIVATE Source/programa.lci)
 set_target_properties(lcero_vm PROPERTIES OUTPUT_NAME "lcero-vm")
+set_target_properties(lcero_vm PROPERTIES
+    VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+set_property(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    PROPERTY VS_STARTUP_PROJECT lcero_vm)
 
 if(MSVC)
     target_compile_options(lcero_vm PRIVATE /W4 /permissive- /utf-8)

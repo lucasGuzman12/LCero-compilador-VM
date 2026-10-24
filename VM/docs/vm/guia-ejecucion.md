@@ -180,7 +180,8 @@ En PowerShell, el código de la última ejecución se consulta mediante `$LASTEX
 4. Espere a que Visual Studio termine la configuración CMake.
 5. Seleccione el preset `vs2026-x64` y la configuración `x64-Debug`.
 6. Use **Compilar > Compilar todo**. El ejecutable debe aparecer en `build\bin\Debug\lcero-vm.exe`.
-7. Abra **Ver > Terminal** dentro de Visual Studio y ejecute cualquiera de los comandos de las secciones anteriores. Este método evita depender de una configuración particular de argumentos de depuración.
+7. Seleccione `lcero_vm` como proyecto de inicio y use el botón de ejecución sin agregar argumentos. Se abrirá y ejecutará `Source/programa.lci` dentro de `VM`; el ejemplo incluido imprime `5`.
+8. Para que la consola permanezca visible al terminar, use **Iniciar sin depurar** (Ctrl+F5). Para ejecutar otro archivo, reemplace `Source/programa.lci` por el `.lci` emitido por el compilador o siga usando los argumentos habituales de la CLI.
 
 La configuración comprobada produjo `build\LCeroVM.slnx`. Es válido abrir esa solución generada, seleccionar plataforma `x64` y configuración Debug o Release. Otra versión del generador podría producir `.sln`. No agregue ninguno de esos artefactos al control de versiones: todo `build\` es regenerable y está excluido mediante `.gitignore`.
 
@@ -189,7 +190,7 @@ Para depurar una transición:
 1. Abra `src/vm/interpreter.cpp`.
 2. Coloque un breakpoint dentro de `execute_instruction`, por ejemplo en la rama `Opcode::constant`.
 3. Seleccione `lcero_vm` como elemento de inicio.
-4. Abra **Depurar > Configuración de depuración e inicio** para ese target y agregue como argumento una ruta `.lci`, por ejemplo `test\contracts\valid\01_hola_registros.lci`. Mantenga `LCero` como directorio de trabajo.
+4. Sin argumentos se usa `Source/programa.lci`. Para depurar otro archivo, abra **Depurar > Configuración de depuración e inicio** para ese target y agregue como argumento su ruta `.lci`, por ejemplo `test\contracts\valid\01_hola_registros.lci`.
 5. Inicie la depuración. Podrá inspeccionar `pc`, `k`, registros, memoria dispersa y el opcode actual sin involucrar código fuente `.lc` ni estructuras del compilador.
 
 Los nombres exactos de algunos menús pueden variar ligeramente según el idioma de Visual Studio. Si el selector de inicio no permite añadir argumentos, use la terminal integrada para ejecutar el programa y seleccione `lcero_vm_interpreter_tests` para depurar las transiciones automatizadas.

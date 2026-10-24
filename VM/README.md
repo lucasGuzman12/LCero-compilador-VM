@@ -61,13 +61,25 @@ También se puede ejecutar `./scripts/build-debug.ps1`; localiza la copia de CMa
 
 Los ejecutables quedan en `build/bin/Debug/lcero-vm.exe` y `build/bin/Release/lcero-vm.exe`.
 
+### Ejecutar con el botón de Visual Studio
+
+Abra la carpeta `VM` en Visual Studio, seleccione `lcero_vm` como proyecto de inicio
+y ejecute sin argumentos. La VM abre `Source/programa.lci` dentro de este proyecto,
+lo valida y lo ejecuta; el ejemplo incluido imprime `5`. Puede reemplazar ese
+archivo por cualquier `.lci` generado por el compilador, sin cambiar la VM.
+La ruta predeterminada se localiza desde la ubicación del ejecutable, aunque
+Visual Studio use `build/` como directorio de trabajo. El límite habitual de
+100000 pasos sigue vigente. Para conservar la consola visible al terminar, use
+**Iniciar sin depurar** (Ctrl+F5).
+
 ## Alcance actual
 
 - `--help` y `--version`: disponibles, salida informativa por `stdout`.
 - `--check archivo.lci`: valida bytes, gramática, operandos, slots y etiquetas sin ejecutar; informa por `stderr` y usa exit 0/3/5.
-- Sin argumentos, opción desconocida, ruta inválida o archivo inaccesible: error de CLI por `stderr`, código 5.
+- Sin argumentos: ejecuta `VM/Source/programa.lci`; si falta, informa error de archivo por `stderr`, código 5.
+- Opción desconocida, ruta inválida o archivo inaccesible: error de CLI por `stderr`, código 5.
 - Ruta existente `.lci` sin `--check`: carga, valida y ejecuta las 18 instrucciones aprobadas. `HALT`, `ERROR` y `LIMIT` devuelven respectivamente 0, 2 y 4.
-- Las rutas relativas se buscan primero en el directorio de trabajo. Si el archivo no existe allí, la VM asciende desde la ubicación real de `lcero-vm.exe`; esto permite usar `TestsParaVM\prueba_1.lci` desde otra carpeta sin fijar una ruta personal. Las rutas absolutas no se reinterpretan.
+- Las rutas relativas indicadas por argumento se buscan primero en el directorio de trabajo. Si el archivo no existe allí, la VM asciende desde la ubicación real de `lcero-vm.exe`; esto permite usar `TestsParaVM\prueba_1.lci` desde otra carpeta sin fijar una ruta personal. Las rutas absolutas no se reinterpretan.
 - `--max-steps N` limita antes de la siguiente instrucción; `--max-steps 0` es válido. `--no-step-limit` debe pedirse explícitamente y no puede combinarse con el límite numérico.
 - `--trace ruta.log` crea un log UTF-8/LF con estado inicial, pares `BEFORE`/`AFTER`, diffs de estado y resultado terminal. La traza no altera `PRINT`, `pc`, `k` ni el código de una ejecución exitosa.
 - `stdout` queda reservado a `PRINT`, en decimal y con byte LF exacto incluso bajo redirección en Windows. Estados y diagnósticos van a `stderr`.

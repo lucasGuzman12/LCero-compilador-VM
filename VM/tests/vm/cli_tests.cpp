@@ -2,6 +2,7 @@
 
 #include <boost/multiprecision/cpp_int.hpp>
 
+#include <chrono>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -100,11 +101,6 @@ void test_help_and_version() {
 }
 
 void test_invalid_arguments() {
-    const CliResult missing = invoke({});
-    expect(missing.exit_code == 5, "la entrada ausente devuelve codigo 5");
-    expect(missing.standard_output.empty(),
-           "un error de argumentos no contamina stdout");
-
     const CliResult unknown = invoke({L"--opcion-inexistente"});
     expect(unknown.exit_code == 5, "una opcion desconocida devuelve codigo 5");
     expect(unknown.standard_error.find(L"LCERO_CLI_ERROR=ARGUMENTOS") !=
@@ -157,6 +153,50 @@ void test_invalid_arguments() {
            "una ruta inexistente no se presenta como HALT");
     expect(nonexistent.standard_output.empty(),
            "una ruta inexistente no produce PRINT");
+}
+
+void test_default_source_from_vm_project() {
+    const auto unique_name = "lcero_cli_default_" + std::to_string(
+        std::chrono::steady_clock::now().time_since_epoch().count());
+    const std::filesystem::path project =
+        std::filesystem::temp_directory_path() / unique_name;
+    const std::filesystem::path source = project / "Source";
+    const std::filesystem::path program = source / "programa.lci";
+    const std::filesystem::path executable =
+        project / "build" / "bin" / "Debug" / "lcero-vm.exe";
+
+    std::error_code file_error;
+    std::filesystem::create_directories(source, file_error);
+    expect(!file_error, "se crea el proyecto temporal de la VM");
+    {
+        std::ofstream cmake(project / "CMakeLists.txt");
+        std::ofstream manifest(project / "vcpkg.json");
+        std::ofstream input(program, std::ios::binary);
+        input << "LCERO_IR 1\nMEM 0\nCONST R0, 17\nPRINT R0\nHALT\n";
+        expect(cmake.good() && manifest.good() && input.good(),
+               "se crea Source/programa.lci junto a la raiz de la VM");
+    }
+
+    const CliResult result = invoke_from_executable({}, executable);
+    expect(result.exit_code == 0 && result.standard_output == "17\n",
+           "sin argumentos se ejecuta el programa de Source de la VM");
+    expect(result.standard_error.find(L"LCERO_STATUS=HALT") !=
+               std::wstring::npos,
+           "la ejecucion predeterminada informa HALT");
+
+    std::filesystem::remove(program, file_error);
+    expect(!file_error, "se retira el programa temporal");
+    const CliResult missing = invoke_from_executable({}, executable);
+    expect(missing.exit_code == 5 && missing.standard_output.empty() &&
+               missing.standard_error.find(L"LCERO_CLI_ERROR=ARCHIVO") !=
+                   std::wstring::npos,
+           "sin programa predeterminado se informa el archivo faltante");
+
+    std::filesystem::remove(project / "CMakeLists.txt", file_error);
+    std::filesystem::remove(project / "vcpkg.json", file_error);
+    std::filesystem::remove(source, file_error);
+    std::filesystem::remove(project, file_error);
+    expect(!file_error, "se elimina la jerarquia temporal creada por la prueba");
 }
 
 void test_execution_with_unicode_path() {
@@ -327,6 +367,7 @@ int main() {
     test_boost_dependency();
     test_help_and_version();
     test_invalid_arguments();
+    test_default_source_from_vm_project();
     test_execution_with_unicode_path();
     test_relative_path_falls_back_to_executable_tree();
     test_check_mode();

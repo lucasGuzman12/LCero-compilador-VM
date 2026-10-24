@@ -38,6 +38,7 @@ void print_help(std::ostream& output) {
     // La extension .lci marca la frontera formal entre compilador y VM: esta
     // interfaz nunca acepta fuente .lc, AST ni tokens del lexer del compilador.
     output << "Uso:\n"
+           << "  lcero-vm.exe                         (Source/programa.lci)\n"
            << "  lcero-vm.exe --help\n"
            << "  lcero-vm.exe --version\n"
            << "  lcero-vm.exe --check ruta\\programa.lci\n"
@@ -46,8 +47,9 @@ void print_help(std::ostream& output) {
            << "Ejecuta LCERO_IR 1 con limite predeterminado de 100000 pasos.\n"
            << "--check valida sin ejecutar; --max-steps 0 es valido.\n"
            << "--trace escribe un log UTF-8/LF sin mezclarlo con PRINT.\n"
-           << "Una ruta relativa busca primero en CWD y luego junto al arbol "
-              "del ejecutable.\n";
+           << "Sin argumentos ejecuta Source/programa.lci del proyecto VM.\n"
+           << "Una ruta relativa explicita busca primero en CWD y luego junto "
+              "al arbol del ejecutable.\n";
 }
 
 void print_cli_error(std::wostream& error,
@@ -112,6 +114,58 @@ std::filesystem::path resolve_input_path(
         directory = parent;
     }
     return requested_path;
+}
+
+std::optional<std::filesystem::path> find_vm_project_root(
+    std::filesystem::path directory) {
+    std::error_code absolute_error;
+    directory = std::filesystem::absolute(directory, absolute_error);
+    if (absolute_error) {
+        return std::nullopt;
+    }
+
+    while (!directory.empty()) {
+        std::error_code cmake_error;
+        std::error_code manifest_error;
+        if (std::filesystem::is_regular_file(directory / "CMakeLists.txt",
+                                             cmake_error) &&
+            !cmake_error &&
+            std::filesystem::is_regular_file(directory / "vcpkg.json",
+                                             manifest_error) &&
+            !manifest_error) {
+            return directory;
+        }
+
+        const std::filesystem::path parent = directory.parent_path();
+        if (parent == directory) {
+            break;
+        }
+        directory = parent;
+    }
+    return std::nullopt;
+}
+
+std::filesystem::path default_input_path(
+    const std::filesystem::path& executable_path) {
+    const std::filesystem::path relative_source =
+        std::filesystem::path("Source") / "programa.lci";
+    if (!executable_path.empty()) {
+        const auto root = find_vm_project_root(executable_path.parent_path());
+        if (root.has_value()) {
+            return *root / relative_source;
+        }
+    }
+
+    std::error_code current_path_error;
+    const auto current_directory =
+        std::filesystem::current_path(current_path_error);
+    if (!current_path_error) {
+        const auto root = find_vm_project_root(current_directory);
+        if (root.has_value()) {
+            return *root / relative_source;
+        }
+    }
+    return relative_source;
 }
 
 std::wstring widen_ascii(const std::string_view text) {
@@ -461,19 +515,18 @@ int run(const std::vector<std::wstring>& arguments,
         standard_output << kVersion << '\n';
         return as_integer(ExitCode::success);
     }
+    ParsedCommand command;
     if (arguments.empty()) {
-        print_cli_error(standard_error, L"ARGUMENTOS",
-                        L"falta la ruta de entrada .lci; use --help");
-        return as_integer(ExitCode::usage_or_file_error);
+        command.input_path = default_input_path(executable_path);
+    } else {
+        Result<ParsedCommand> parsed = parse_command(arguments);
+        if (!parsed.ok()) {
+            print_cli_error(standard_error, L"ARGUMENTOS",
+                            widen_ascii(parsed.diagnostic->message) + L"; use --help");
+            return as_integer(ExitCode::usage_or_file_error);
+        }
+        command = std::move(*parsed.value);
     }
-
-    const Result<ParsedCommand> parsed = parse_command(arguments);
-    if (!parsed.ok()) {
-        print_cli_error(standard_error, L"ARGUMENTOS",
-                        widen_ascii(parsed.diagnostic->message) + L"; use --help");
-        return as_integer(ExitCode::usage_or_file_error);
-    }
-    const ParsedCommand& command = *parsed.value;
     if (!has_lci_extension(command.input_path)) {
         print_cli_error(standard_error, L"ARCHIVO",
                         L"la VM acepta exclusivamente archivos .lci");
@@ -486,8 +539,9 @@ int run(const std::vector<std::wstring>& arguments,
         return as_integer(ExitCode::usage_or_file_error);
     }
 
-    const std::filesystem::path input_path =
-        resolve_input_path(command.input_path, executable_path);
+    const std::filesystem::path input_path = arguments.empty()
+        ? command.input_path
+        : resolve_input_path(command.input_path, executable_path);
 
     std::error_code file_error;
     const bool is_regular_input =
